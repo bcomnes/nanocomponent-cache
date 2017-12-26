@@ -1,0 +1,25 @@
+{
+  "name": "nanocomponent-cache",
+  "version": "1.0.0",
+  "description": "Create or cache nanocomponent instances by key",
+  "main": "index.js",
+  "scripts": {
+    "test": "run-s test:*"
+  },
+  "keywords": [
+    "nanocomponent",
+    "choo",
+    "cache",
+    "components"
+  ],
+  "author": "Bret Comnes",
+  "license": "MIT",
+  "devDependencies": {
+    "@tap-format/spec": "^0.2.0",
+    "existy": "^1.0.1",
+    "npm-run-all": "^4.0.2",
+    "standard": "^10.0.0",
+    "tape": "^4.7.0",
+    "tape-run": "^3.0.0"
+  }
+}
