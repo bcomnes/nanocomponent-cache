@@ -4,7 +4,14 @@
   "description": "Create or cache nanocomponent instances by key",
   "main": "index.js",
   "scripts": {
-    "test": "run-s test:*"
+    "start": "budo example/heterogeneous/index.js --live --open",
+    "start:homogenous": "budo example/homogeneous/index.js --live --open",
+    "start:test": "budo test.js --live --open",
+    "test": "run-s test:*",
+    "test:browser": "browserify test.js | tape-run | tap-format-spec",
+    "test:deps": "dependency-check .",
+    "test:lint": "standard",
+    "build": "bankai build example/complex/index.js dist"
   },
   "keywords": [
     "nanocomponent",
@@ -16,10 +23,21 @@
   "license": "MIT",
   "devDependencies": {
     "@tap-format/spec": "^0.2.0",
+    "bankai": "^9.1.0",
+    "bel": "^5.1.5",
+    "budo": "^10.0.4",
+    "choo": "^6.6.1",
     "existy": "^1.0.1",
+    "fy-shuffle": "^1.0.0",
+    "lodash.isequal": "^4.5.0",
+    "nanocomponent": "^6.5.0",
     "npm-run-all": "^4.0.2",
     "standard": "^10.0.0",
     "tape": "^4.7.0",
-    "tape-run": "^3.0.0"
+    "tape-run": "^3.0.0",
+    "twitter-component": "^1.0.2"
+  },
+  "dependencies": {
+    "class-cache": "^1.0.0"
   }
 }
