@@ -25,7 +25,7 @@
     "@tap-format/spec": "^0.2.0",
     "bankai": "^9.1.0",
     "bel": "^5.1.5",
-    "budo": "^10.0.4",
+    "budo": "git://github.com/bcomnes/budo.git#browserify",
     "choo": "^6.6.1",
     "existy": "^1.0.1",
     "fy-shuffle": "^1.0.0",
@@ -35,7 +35,8 @@
     "standard": "^10.0.0",
     "tape": "^4.7.0",
     "tape-run": "^3.0.0",
-    "twitter-component": "^1.0.2"
+    "twitter-component": "^1.0.2",
+    "youtube-component": "^1.1.1"
   },
   "dependencies": {
     "class-cache": "^1.0.0"

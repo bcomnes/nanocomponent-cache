@@ -1,19 +1,19 @@
-var html = require('choo/html')
-var choo = require('choo')
-var TweetList = require('./tweet-list')
-var shuffleArray = require('fy-shuffle')
+const html = require('choo/html')
+const choo = require('choo')
+const TweetList = require('./tweet-list')
+const shuffleArray = require('fy-shuffle')
 
-var app = choo()
+const app = choo()
 app.use(tweetStore)
 app.route('/', mainView)
 if (typeof window !== 'undefined') {
-  var container = document.createElement('div')
+  const container = document.createElement('div')
   container.id = 'container'
   document.body.appendChild(container)
   app.mount('#container')
 }
 
-var list = new TweetList()
+const list = new TweetList()
 
 function mainView (state, emit) {
   return html`
@@ -34,7 +34,7 @@ function mainView (state, emit) {
     </div>`
 }
 
-var moreTweets = [
+const moreTweets = [
   'https://twitter.com/uhhyeahbret/status/898315707254841344',
   'https://twitter.com/uhhyeahbret/status/898214560267608064',
   'https://twitter.com/uhhyeahbret/status/898196092189253632'
@@ -56,28 +56,28 @@ function tweetStore (state, emitter) {
       emitter.emit('render')
     })
     emitter.on('add-tweet', function () {
-      var a = moreTweets.pop()
+      const a = moreTweets.pop()
       if (a) {
         state.tweets.unshift(a)
         emitter.emit('render')
       }
     })
     emitter.on('append-tweet', function () {
-      var a = moreTweets.pop()
+      const a = moreTweets.pop()
       if (a) {
         state.tweets.push(a)
         emitter.emit('render')
       }
     })
     emitter.on('pop-tweet', function () {
-      var a = state.tweets.pop()
+      const a = state.tweets.pop()
       if (a) {
         moreTweets.push(a)
         emitter.emit('render')
       }
     })
     emitter.on('shift-tweet', function () {
-      var a = state.tweets.shift()
+      const a = state.tweets.shift()
       console.log(a)
       if (a) {
         moreTweets.push(a)
