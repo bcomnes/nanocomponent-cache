@@ -6,6 +6,7 @@
   "scripts": {
     "start": "budo example/heterogeneous/index.js --live --open",
     "start:homogenous": "budo example/homogeneous/index.js --live --open",
+    "start:buttons": "budo example/hella-buttons/index.js --live --open",
     "start:test": "budo test.js --live --open",
     "test": "run-s test:*",
     "test:browser": "browserify test.js | tape-run | tap-format-spec",
