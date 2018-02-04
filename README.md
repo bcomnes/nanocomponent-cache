@@ -2,29 +2,30 @@
 [![npm version][2]][3] [![build status][4]][5]
 [![downloads][8]][9] [![js-standard-style][10]][11]
 
-Cache a nanocomponent instance by key.  Creates a new instance if the key doesn't exist, otherwise returns the cached instance.  A subclass of [class-cache][cc] providing sane GC function defaults.
+Cache a nanocomponent instance by key.  Creates a new instance if the key doesn't exist, otherwise returns the cached instance.  A subclass of [class-cache][cc] providing sane GC function defaults and a set of examples of intended usage.
 
 ## Usage
 
 ```js
-const Tweet = require('twitter-component')
-const Nanocomponent = require('nanocomponent')
-const html = require('bel')
-const compare = require('nanocomponent/compare')
 const NanocomponentCache = require('nanocomponent-cache')
+const compare = require('nanocomponent/compare')
+const Nanocomponent = require('nanocomponent')
+const Tweet = require('twitter-component')
 const assert = require('assert')
+const html = require('bel')
 
 class TweetList extends Nanocomponent {
   constructor () {
     super()
     this.tweetList = null
     this.nc = new NanocomponentCache()
+    // Register the components you will be caching
     this.nc.register(Tweet, [{ placeholder: false }])
   }
 
   createElement (tweetList) {
     assert(isArray(tweetList), 'tweetList must be an array of tweet URLs')
-    this.tweetList = tweetList.slice() // Have to slice since tweetList is an array
+    this.tweetList = tweetList // Cache a reference to tweetList
     const nc = this.nc
     return html`
       <div>
@@ -39,6 +40,7 @@ class TweetList extends Nanocomponent {
   }
 
   afterupdate (el) {
+    // Periodically run the GC function to clean up unused instances
     this.nc.gc()
   }
 }
@@ -72,8 +74,8 @@ Define a `Class` for the optional `typeKey`.  The default `typeKey` is `default`
 
 ```js
 {
-  gc: undefined // a typeKey specific GC function,
-  args: undefined // default arguments instance arguments
+  gc: undefined // a typeKey specific GC function.
+  args: undefined // default arguments instance arguments for `typeKey`. 
   // These options delegate to the top level options if left un-implemented
 }
 ```
@@ -97,7 +99,7 @@ c.register({
 })
 ```
 
-Types are `Object.assign`ed over previously registered types.
+Types are `Object.assign`ed over previously registered types.  The `opts` keys are the same as above.
 
 ### `c.unregister(...types)`
 
@@ -105,7 +107,7 @@ Pass typeKeys as arguments to un-register them.  Instances are untouched during 
 
 ### `c.get(key, [Class || typeKey], [opts])`
 
-Return instance of `Class` or defined `type` class at `key`.  If an instance does not yet exist at `key`, it will be instantiated with `args` along with a `key` specific `gc` function.  If `type` is not defined, this method will throw.
+The primary method used to retrieve and create instances.  Return instance of `Class` or defined `type` class at `key`.  If an instance does not yet exist at `key`, it will be instantiated with `args` along with a `key` specific `gc` function.  If `type` is not defined, this method will throw.
 
 Omitting optional method arguments delegates to the next most specific option. 
 
@@ -123,13 +125,13 @@ If `key` is already instantiated, `args` is ignored.  Pass changing properties a
 
 Force instantiate the class instance at `key`.  Follows the same override behavior as `get`.  If you must change `args` on a key, this is the safest way to do that.
 
-Returns the newly created instance.s
+Returns the newly created instance.
 
 ### `c.gc()`
 
 Run the various `gc` functions defined.  For each key, only the most specific `gc` function set is run.  Return `true` from the `gc` functions to garbage collect that instance, and `false` to preserve.
 
-This is used to clean out instances you no longer need.
+This is used to clean out instances you no longer need.  Because this iterates over all keys with instances, run this often enough so that the key set doesn't grow too large but not too often to create unnecessary delays in render loops.
 
 ### `c.clear()`
 
@@ -144,6 +146,17 @@ Delete specific `key` instance.  Will run the `gc` function passing `true` as th
 Return true if `key` exists. 
 
 See examples for more details.
+
+## Examples
+
+See the `examples` folder for various ideas on how to use this library.
+
+## See Also
+
+- [nanocomponent][nc]
+- [choo][choo]
+- [choo component thread][]
+- TODO: Get the other component cache solutions
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
