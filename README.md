@@ -61,7 +61,7 @@ module.exports = TweetList
 $ npm install nanocomponent-cache
 ```
 ## API
-### `NanocomponentCache = require('nanocomponent-cache`)
+### `NanocomponentCache = require('nanocomponent-cache')`
 Require `NanocomponentCache` class.
 
 ### `c = new NanocomponentCache([opts])`
