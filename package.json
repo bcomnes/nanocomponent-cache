@@ -1,28 +1,14 @@
 {
   "name": "nanocomponent-cache",
-  "version": "1.0.0",
   "description": "Create or cache nanocomponent instances by key",
-  "main": "index.js",
-  "scripts": {
-    "start": "budo example/heterogeneous/index.js --live --open",
-    "start:homogenous": "budo example/homogeneous/index.js --live --open",
-    "start:buttons": "budo example/hella-buttons/index.js --live --open",
-    "start:shared": "budo example/shared/index.js --live --open",
-    "start:test": "budo test.js --live --open",
-    "test": "run-s test:*",
-    "test:browser": "browserify test.js | tape-run | tap-format-spec",
-    "test:deps": "dependency-check .",
-    "test:lint": "standard",
-    "build": "bankai build example/complex/index.js dist"
-  },
-  "keywords": [
-    "nanocomponent",
-    "choo",
-    "cache",
-    "components"
-  ],
+  "version": "1.0.0",
   "author": "Bret Comnes",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bcomnes/nanocomponent-cache/issues"
+  },
+  "dependencies": {
+    "class-cache": "^1.1.0"
+  },
   "devDependencies": {
     "@tap-format/spec": "^0.2.0",
     "bankai": "^9.1.0",
@@ -41,7 +27,29 @@
     "twitter-component": "^1.0.2",
     "youtube-component": "^1.1.1"
   },
-  "dependencies": {
-    "class-cache": "^1.1.0"
+  "homepage": "https://github.com/bcomnes/nanocomponent-cache#readme",
+  "keywords": [
+    "cache",
+    "choo",
+    "components",
+    "nanocomponent"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcomnes/nanocomponent-cache.git"
+  },
+  "scripts": {
+    "build": "bankai build example/complex/index.js dist",
+    "start": "budo example/heterogeneous/index.js --live --open",
+    "start:buttons": "budo example/hella-buttons/index.js --live --open",
+    "start:homogenous": "budo example/homogeneous/index.js --live --open",
+    "start:shared": "budo example/shared/index.js --live --open",
+    "start:test": "budo test.js --live --open",
+    "test": "run-s test:*",
+    "test:browser": "browserify test.js | tape-run | tap-format-spec",
+    "test:deps": "dependency-check .",
+    "test:lint": "standard"
   }
 }
