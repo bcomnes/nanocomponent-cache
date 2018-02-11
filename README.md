@@ -18,7 +18,8 @@ class TweetList extends Nanocomponent {
   constructor () {
     super()
     this.tweetList = null
-    this.nc = new NanocomponentCache()
+    // auto-eject last used instances over 100 total cached
+    this.nc = new NanocomponentCache({ lru: 100 })
     // Register the components you will be caching
     this.nc.register(Tweet, {args: [{ placeholder: false }]} )
   }
@@ -40,13 +41,20 @@ class TweetList extends Nanocomponent {
   }
 
   afterupdate (el) {
-    // Periodically run the GC function to clean up unused instances
+    // Periodically run the GC function to clean up unused instances.
     this.nc.gc()
   }
 }
 
 module.exports = TweetList
 ```
+
+## Examples
+
+- [homogeneous](examples/homogeneous)
+- [heterogeneous](examples/heterogeneous)
+- [hella-buttons](examples/hella-buttons)
+- [shared](examples/shared)
 
 ## Installation
 ```sh
