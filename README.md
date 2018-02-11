@@ -155,8 +155,8 @@ See the `examples` folder for various ideas on how to use this library.
 
 - [nanocomponent][nc]
 - [choo][choo]
-- [choo component thread][]
-- TODO: Get the other component cache solutions
+- [choo component thread](https://github.com/choojs/choo/issues/593#issuecomment-364555843)
+- [class-cache](https://github.com/bcomnes/class-cache)
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
