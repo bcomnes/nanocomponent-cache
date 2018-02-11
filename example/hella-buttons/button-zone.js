@@ -14,17 +14,17 @@ class ButtonZone extends Nanocomponent {
   createElement (state, emit) {
     this.emit = emit
     const c = this.c
-    const opts = { onclick: this.handleClick }
+    const props = { onclick: this.handleClick }
 
     return html`
       <div>
-        ${c.get('button-1').render(opts, 'Button 1')}
-        ${c.get('button-2').render(opts, 'Button 2')}
-        ${c.get('button-3').render(Object.assign({}, opts, {disabled: true}), 'Button 3')}
-        ${c.get('button-4').render(opts, 'Button 4')}
-        ${c.get('button-5').render(opts, 'Button 5')}
-        ${c.get('button-6').render(opts, 'Button 6')}
-        ${c.get('button-6', {args: ['button-whatever']}).render(opts, 'Button 6')}
+        ${c.get('button-0').render(props)}
+        ${c.get('button-1').render(props, 'Button foo')}
+        ${c.get('button-2').render({disabled: true})}
+        ${c.get('button-3').render(props)}
+        ${c.get('button-4').render(props)}
+        ${c.get('button-5').render(props)}
+        ${c.get('button-6', {args: ['button-whatever']}).render(props, 'Button 6')}
       </div>
     `
   }

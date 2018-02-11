@@ -26,7 +26,7 @@
     "@tap-format/spec": "^0.2.0",
     "bankai": "^9.1.0",
     "bel": "^5.1.5",
-    "budo": "^10.0.4",
+    "budo": "^11.1.0",
     "choo": "^6.6.1",
     "dependency-check": "^3.0.0",
     "existy": "^1.0.1",

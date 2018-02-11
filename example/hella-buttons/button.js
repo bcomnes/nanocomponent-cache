@@ -19,8 +19,8 @@ class Button extends Nanocomponent {
     <button class="${className || ''}"
       disabled=${disabled || false}
       data-name=${this.name}
-      onclick=${this.onclick || null}>
-      ${children || ''}
+      onclick=${onclick || null}>
+      ${children || this.name}
     </button>
     `
   }

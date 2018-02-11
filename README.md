@@ -2,7 +2,7 @@
 [![npm version][2]][3] [![build status][4]][5]
 [![downloads][8]][9] [![js-standard-style][10]][11]
 
-Cache a nanocomponent instance by key.  Creates a new instance if the key doesn't exist, otherwise returns the cached instance.  A subclass of [class-cache][cc] providing sane GC function defaults and a set of examples of intended usage.
+Cache a nanocomponent instance by key.  Creates a new instance if the key doesn't exist, otherwise returns the cached instance.  A subclass of [class-cache][cc] providing sane GC function defaults and a set of examples of intended usage.  Optional LRU caching.
 
 ## Usage
 
@@ -20,7 +20,7 @@ class TweetList extends Nanocomponent {
     this.tweetList = null
     this.nc = new NanocomponentCache()
     // Register the components you will be caching
-    this.nc.register(Tweet, [{ placeholder: false }])
+    this.nc.register(Tweet, {args: [{ placeholder: false }]} )
   }
 
   createElement (tweetList) {
@@ -64,7 +64,8 @@ Create a new cache instance.
 ```js
 {
   gc: (component) => !component.element // a default garbage collection function
-  args: [] // Default args used for instantiating all classes
+  args: [] // Default args used for instantiating all classes,
+  lru: 0 // Enable LRU gc by setting this to an integer greater than 0
 }
 ```
 

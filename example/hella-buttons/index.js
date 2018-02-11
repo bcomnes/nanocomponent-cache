@@ -31,5 +31,6 @@ function clickerStore (state, emitter) {
     if (!isNaN(state.buttons[name])) state.buttons[name]++
     else state.buttons[name] = 1
     console.log(state.buttons)
+    emitter.emit('render')
   })
 }
