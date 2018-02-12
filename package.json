@@ -41,8 +41,13 @@
     "url": "git+https://github.com/bcomnes/nanocomponent-cache.git"
   },
   "scripts": {
-    "build": "bankai build example/complex/index.js dist",
-    "start": "budo example/heterogeneous/index.js --live --open",
+    "build": "run-p build:*",
+    "build:heterogeneous": "bankai build example/heterogeneous/index.js",
+    "build:buttons": "bankai build example/hella-buttons/index.js",
+    "build:homogeneous": "bankai build example/homogeneous/index.js",
+    "build:shared": "bankai build example/shared/index.js",
+    "start": "run-s start:heterogeneous",
+    "start:heterogeneous": "budo example/heterogeneous/index.js --live --open",
     "start:buttons": "budo example/hella-buttons/index.js --live --open",
     "start:homogenous": "budo example/homogeneous/index.js --live --open",
     "start:shared": "budo example/shared/index.js --live --open",
