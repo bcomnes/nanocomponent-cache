@@ -51,10 +51,10 @@ module.exports = TweetList
 
 ## Examples
 
-- [homogeneous](examples/homogeneous)[🌎](https://nanocomponent-cache-homogeneous.netlify.com)
-- [heterogeneous](examples/heterogeneous)[🌎](https://nanocomponent-cache-heterogeneous.netlify.com)
-- [hella-buttons](examples/hella-buttons)[🌎](https://nanocomponent-cache-buttons.netlify.com)
-- [shared](examples/shared)[🌎](https://nanocomponent-cache-shared.netlify.com)
+- [homogeneous](examples/homogeneous) ([🌎](https://nanocomponent-cache-homogeneous.netlify.com))
+- [heterogeneous](examples/heterogeneous) ([🌎](https://nanocomponent-cache-heterogeneous.netlify.com))
+- [hella-buttons](examples/hella-buttons) ([🌎](https://nanocomponent-cache-buttons.netlify.com))
+- [shared](examples/shared) ([🌎](https://nanocomponent-cache-shared.netlify.com))
 
 ## Installation
 ```sh
